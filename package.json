@@ -1,5 +1,5 @@
 {
-  "name": "classproject",
+  "name": "assignment",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -16,5 +16,7 @@
     "jquery": "^3.7.1",
     "mongoose": "^8.0.0",
     "morgan": "~1.9.1"
-  }
+  },
+  "engines": {
+    "node": ">=18.18.0 <19.0.0"
 }
