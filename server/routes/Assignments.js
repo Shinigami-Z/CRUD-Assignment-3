@@ -1,11 +1,22 @@
 var express = require('express');
 var router = express.Router();
 //const { router } = require('../config/app');
-let Book = require('../models/Assignments');
+let Assignment = require('../models/Assignments');
 let AssignmentController = require('../controllers/Assignments')
+
+let mongoose = require('mongoose');
+// helper function
+function requireAuth(req,res,next){
+ if(!req.isAuthenticated())
+ {
+  return res.redirect('/login')
+ }
+ next();
+}
+
 /* Get route for the Assignments */
 // Read Operation
-router.get('/', AssignmentController.DislayAssignments);
+router.get('/', AssignmentController.DisplayAssignments);
 /* Get route for Add Assignment page --> Create */
 router.get('/add', AssignmentController.AddAssignment);
 /* Post route for Add Assignment page --> Create */

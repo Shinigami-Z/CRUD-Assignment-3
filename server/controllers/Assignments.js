@@ -3,12 +3,13 @@ var router = express.Router();
 //const { router } = require('../config/app');
 let Assignment = require('../models/Assignments');
 
-module.exports.DislayAssignments = async (req, res, next)=>{ //< Mark function as async
+module.exports.DisplayAssignments = async (req, res, next)=>{ //< Mark function as async
     try{
         const Assignments = await Assignment.find(); //< Use of await keyword
         res.render('Assignment/list', {
             title: 'Assignments',
-            Assignments: Assignments
+            Assignments: Assignments,
+            displayName: req.user ? req.user.displayName:''
         });
     }catch(err){
         console.error(err);
@@ -23,7 +24,8 @@ module.exports.AddAssignment = async (req, res, next)=>{
     try{
         res.render('Assignment/add',
             {
-                title:'Add Assignment'
+                title:'Add Assignment',
+                displayName: req.user ? req.user.displayName:''
             })
     }
     catch(err)
